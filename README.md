@@ -11,3 +11,6 @@ Fast and straightforward implementation of the Cox-Ross-Rubinstein binomial opti
 **3. Speed**
    The pricer is MUCH faster than many of the Python implementations of CRR I have seen on Github. 
    E.g. for a large number of steps (which is needed for more accurate pricing), the speed-up reaches a factor of ~20x compared to some existing implementations.
+
+**DISCLAIMER**
+Option values provided by the model DO NOT constitute an investment recommendation. The author of the implementation is in no way responsible for the investment outcomes that may result from using the pricer.
