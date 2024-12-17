@@ -4,7 +4,13 @@ Created on Tue Dec 17 11:00:33 2024
 
 @author: apast
 """
-
+# S0 - starting stock price
+# K - strike
+# T - maturity (years)
+# sigma - annual volatility of the underlying stock
+# r - annual interest rate 
+# Steps - number of discrete time steps; larger numbers of Steps ensure more accurate pricing (e.g. 5000-10000)
+# OptType - enter 0 for calls, 1 for puts
 
 def AmOption(S0,K,T,sigma,r,Steps,OptType):
     import numpy as np
