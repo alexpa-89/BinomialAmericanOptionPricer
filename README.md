@@ -1,4 +1,4 @@
-# BinomialAmericanOptionPricer
+# Binomial American Option Pricer
 Fast and straightforward implementation of the Cox-Ross-Rubinstein binomial option pricing model for American-style calls and puts.
 
 **1. Minimal dependencies**
