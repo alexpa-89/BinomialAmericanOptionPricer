@@ -30,7 +30,7 @@ def AmOption(S0,K,T,sigma,r,Steps,OptType):
         EndValues_np[-1-i,0]=EndingPrice    
     ZeroMatrix=np.zeros((Steps+1,Steps))
     EndValues=np.concatenate((ZeroMatrix,EndValues_np), axis=1)
-    #Step 3: compute the stock prices at all nodes
+    
     
     for i in range(1,Steps+1):
         j=Steps+1-i
@@ -61,11 +61,9 @@ def AmOption(S0,K,T,sigma,r,Steps,OptType):
             total_vector=(up_vector+down_vector)/a
             curr_value=EndValues[0:j,j-1]-K
             curr_value=np.where(curr_value<0,0,curr_value)
-            # maybe can optimize from here somehow
             holder=np.zeros((len(total_vector),2))
             holder[:,0]=total_vector
             holder[:,1]=curr_value
-            ###
             EndValues[0:j,j-1]=holder.max(axis=1)    
     else:
         for i in range(1,Steps+1):
@@ -77,10 +75,8 @@ def AmOption(S0,K,T,sigma,r,Steps,OptType):
             total_vector=(up_vector+down_vector)/a
             curr_value=K-EndValues[0:j,j-1]
             curr_value=np.where(curr_value<0,0,curr_value)
-            # maybe can optimize from here somehow
             holder=np.zeros((len(total_vector),2))
             holder[:,0]=total_vector
             holder[:,1]=curr_value
-            ###
             EndValues[0:j,j-1]=holder.max(axis=1)
     return EndValues[0,0]
