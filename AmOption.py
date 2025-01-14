@@ -80,3 +80,24 @@ def AmOption(S0,K,T,sigma,r,Steps,OptType):
             holder[:,1]=curr_value
             EndValues[0:j,j-1]=holder.max(axis=1)
     return EndValues[0,0]
+
+def theta_decay(S0,K,T,sigma,r,Steps,OptType,val_periods, val_horizon):
+    from AmOption import AmOption
+    import numpy as np
+    if val_horizon>val_periods:
+        return print('val_horizon must be less than or equal val_periods')
+    if val_periods>=Steps:
+        return print('val_periods must be less than Steps')
+    decayed_values=np.zeros((val_horizon,1))
+    for i in range(0,val_horizon):
+        time_frac=(i)/val_periods*T
+        decayed_values[i,0]=AmOption(S0,K,T-time_frac,sigma,r,int(round(Steps*(1-time_frac))),OptType) 
+    try:
+        from matplotlib import pyplot as plt
+        option_values=decayed_values[1:val_horizon,0]/decayed_values[0,0]
+        value_plot=plt.plot(option_values)
+        plt.grid(linestyle="--",alpha=0.5,zorder=1)
+        return option_values, value_plot
+    except ModuleNotFoundError:
+        option_values=decayed_values[1:val_horizon,0]/decayed_values[0,0]
+        return option_values
