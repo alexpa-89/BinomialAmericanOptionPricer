@@ -10,8 +10,9 @@ Compatible with Python 3.7.
    Due to its simplicity, this option pricer can be readily integrated into your setup.
    
 **3. Speed**
-   The pricer is MUCH faster than many of the Python implementations of CRR I have seen on Github. 
+   The pricer is MUCH faster than many of the Python implementations of CRR on Github. 
    E.g. for a large number of steps (which is needed for more accurate pricing), the speed-up reaches a factor of ~20x compared to some existing implementations.
+   For a reasonable number of steps (from 100 to ca. 2500) the pricer is faster than the vectorized solutions produced by LLMs (ChatGPT, Deepseek) while offering the same accuracy.
 
 **4. Theta decay calculator (UPDATE Jan. 15th, 2025)**
 Options lose value with passage of time, the process known as "theta decay". Roughly speaking, theta decay happens because the less time remains until the expiry date, the lower is the probability that the underlying will move _significantly_ in the direction beneficial for the option holder thus increasing the value of the option (as OTM and ATM options go ITM, and ITM options go deeper ITM). 
